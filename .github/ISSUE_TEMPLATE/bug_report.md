@@ -1,6 +1,6 @@
 ---
 name: バグ報告
-about: バグを報告して、egov-viewer の改善に協力してください
+about: バグを報告して、govkit の改善に協力してください
 title: '[BUG] '
 labels: bug
 assignees: ''
@@ -33,7 +33,7 @@ assignees: ''
 
 - OS: [例: macOS 14.0, Ubuntu 22.04, Windows 11]
 - Go バージョン: [例: 1.22.0]
-- egov-viewer バージョン: [例: v1.0.0]
+- govkit バージョン: [例: v1.0.0]
 
 ## 追加コンテキスト
 
