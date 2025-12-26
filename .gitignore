@@ -1,0 +1,7 @@
+govkit
+output.html
+*.exe
+*.test
+*.out
+.DS_Store
+dist/
