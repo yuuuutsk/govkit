@@ -161,13 +161,17 @@ func readDirectory(dirPath string) (map[string][]byte, error) {
 	return files, err
 }
 
-func readZipFile(zipPath string) (map[string][]byte, error) {
-	files := make(map[string][]byte)
+func readZipFile(zipPath string) (files map[string][]byte, err error) {
+	files = make(map[string][]byte)
 	r, err := zip.OpenReader(zipPath)
 	if err != nil {
 		return nil, err
 	}
-	defer r.Close()
+	defer func() {
+		if cerr := r.Close(); cerr != nil && err == nil {
+			err = cerr
+		}
+	}()
 
 	for _, f := range r.File {
 		rc, err := f.Open()
@@ -175,7 +179,9 @@ func readZipFile(zipPath string) (map[string][]byte, error) {
 			return nil, err
 		}
 		data, err := io.ReadAll(rc)
-		rc.Close()
+		if cerr := rc.Close(); cerr != nil && err == nil {
+			err = cerr
+		}
 		if err != nil {
 			return nil, err
 		}
@@ -240,7 +246,7 @@ func parseCSV(filename string, content []byte) CSVData {
 	}
 }
 
-func generateHTML(data TemplateData) error {
+func generateHTML(data TemplateData) (err error) {
 	funcMap := template.FuncMap{
 		"processText": func(text string) template.HTML {
 			text = strings.ReplaceAll(text, "<br/>", "<br>")
@@ -267,7 +273,11 @@ func generateHTML(data TemplateData) error {
 	if err != nil {
 		return err
 	}
-	defer f.Close()
+	defer func() {
+		if cerr := f.Close(); cerr != nil && err == nil {
+			err = cerr
+		}
+	}()
 
 	return tmpl.Execute(f, data)
 }
