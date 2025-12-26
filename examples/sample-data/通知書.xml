@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DOC>
+  <BODY>
+    <DOCNO>12345678</DOCNO>
+    <DATE>令和7年12月26日</DATE>
+    <AUTHOR>
+      <NAME>日本年金機構</NAME>
+      <AFF>○○年金事務所</AFF>
+    </AUTHOR>
+    <TITLE>健康保険・厚生年金保険 保険料納入告知書兼領収済通知書</TITLE>
+    <MAINTXT>
+      <P>このたび、健康保険・厚生年金保険の保険料について、下記のとおりお知らせいたします。<br/>納付期限までに納付をお願いいたします。</P>
+      <P>納付期限：令和7年1月31日</P>
+    </MAINTXT>
+    <APPENDIX>
+      <DOCLINK>保険料増減内訳書.xml</DOCLINK>
+      <APPTITLE>健康保険・厚生年金保険 保険料増減内訳書</APPTITLE>
+    </APPENDIX>
+    <MAINTXT2>
+      <P>ご不明な点がございましたら、下記までお問い合わせください。</P>
+    </MAINTXT2>
+    <APPENDIX2>
+      <DOCLINK>納付額詳細.csv</DOCLINK>
+      <APPTITLE>納付額詳細データ</APPTITLE>
+    </APPENDIX2>
+    <MAINTXT3>
+      <P>※本通知書は電子申請により交付されたものです。</P>
+    </MAINTXT3>
+  </BODY>
+</DOC>

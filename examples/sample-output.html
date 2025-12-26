@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-Gov 通知書ビューアー</title>
+    <style>
+        body {
+            font-family: 'Yu Gothic', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .document {
+            background-color: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #003366;
+            border-bottom: 3px solid #003366;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #0066cc;
+            border-left: 5px solid #0066cc;
+            padding-left: 10px;
+            margin-top: 30px;
+        }
+        .metadata {
+            background-color: #f0f8ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .metadata-item {
+            margin: 5px 0;
+        }
+        .metadata-label {
+            font-weight: bold;
+            color: #003366;
+            display: inline-block;
+            width: 150px;
+        }
+        .appendix-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .appendix-list li {
+            background-color: #e8f4f8;
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 4px solid #0066cc;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #003366;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .paragraph {
+            margin: 15px 0;
+            line-height: 1.8;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .csv-section {
+            margin: 20px 0;
+        }
+        .csv-table {
+            overflow-x: auto;
+        }
+        .decimal {
+            color: #ccc;
+            font-weight: normal;
+            font-size: 0.75em;
+        }
+        .transpose-btn {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        .transpose-btn:hover {
+            background-color: #004999;
+        }
+    </style>
+    <script>
+        function transposeTable(index) {
+            const container = document.getElementById('csv-table-' + index);
+            const table = container.querySelector('table');
+            const thead = table.querySelector('thead');
+            const tbody = table.querySelector('tbody');
+
+            
+            const headers = Array.from(thead.querySelectorAll('th')).map(th => th.innerHTML);
+            const rows = Array.from(tbody.querySelectorAll('tr')).map(tr =>
+                Array.from(tr.querySelectorAll('td')).map(td => td.innerHTML)
+            );
+
+            
+            const allData = [headers, ...rows];
+            const transposed = allData[0].map((_, colIndex) =>
+                allData.map(row => row[colIndex])
+            );
+
+            
+            thead.innerHTML = '';
+            tbody.innerHTML = transposed.map(row =>
+                '<tr>' + row.map(cell => '<td>' + cell + '</td>').join('') + '</tr>'
+            ).join('');
+        }
+    </script>
+</head>
+<body>
+    
+    <div class="document">
+        <h1>健康保険・厚生年金保険 保険料納入告知書兼領収済通知書</h1>
+        <div class="metadata">
+            <div class="metadata-item"><span class="metadata-label">文書番号:</span>12345678</div>
+            <div class="metadata-item"><span class="metadata-label">日付:</span>令和7年12月26日</div>
+            <div class="metadata-item"><span class="metadata-label">発信者:</span>日本年金機構（○○年金事務所）</div>
+        </div>
+
+        
+        <h2>本文</h2>
+        
+        <div class="paragraph">このたび、健康保険・厚生年金保険の保険料について、下記のとおりお知らせいたします。納付期限までに納付をお願いいたします。</div>
+        
+        <div class="paragraph">納付期限：令和7年1月31日</div>
+        
+        
+
+        
+        <h2>添付ファイル</h2>
+        <ul class="appendix-list">
+            
+            <li>健康保険・厚生年金保険 保険料増減内訳書</li>
+            
+        </ul>
+        
+
+        
+        
+        <div class="paragraph">ご不明な点がございましたら、下記までお問い合わせください。</div>
+        
+        
+
+        
+        <h2>CSV ファイル</h2>
+        <ul class="appendix-list">
+            
+            <li>納付額詳細データ</li>
+            
+        </ul>
+        
+
+        
+        <h2>お知らせ</h2>
+        
+        <div class="paragraph">※本通知書は電子申請により交付されたものです。</div>
+        
+        
+    </div>
+    
+
+    
+    <div class="document">
+        <h1>保険料増減内訳書</h1>
+        <div class="metadata">
+            <div class="metadata-item"><span class="metadata-label">事業所名:</span>株式会社サンプル商事</div>
+            <div class="metadata-item"><span class="metadata-label">事業所番号:</span>1234567890</div>
+            <div class="metadata-item"><span class="metadata-label">事業所整理記号:</span>サンプル-1234</div>
+            <div class="metadata-item"><span class="metadata-label">人員数:</span>3</div>
+            <div class="metadata-item"><span class="metadata-label">年金事務所:</span>○○年金事務所</div>
+            <div class="metadata-item"><span class="metadata-label">納付対象:</span>令和7年12月分</div>
+        </div>
+
+        
+        <div class="paragraph">今月の保険料増減についてお知らせいたします。</div>
+        
+
+        
+        <h2>個人別内訳</h2>
+        <div class="csv-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>氏名</th>
+                        <th>処理年月日</th>
+                        <th>届出書コード</th>
+                        <th>健康保険料<br>（本月額）</th>
+                        <th>健康保険料<br>（前月以前額）</th>
+                        <th>厚生年金保険料<br>（本月額）</th>
+                        <th>厚生年金保険料<br>（前月以前額）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td>山田 太郎</td>
+                        <td>令和7年12月1日</td>
+                        <td>101</td>
+                        <td>13860<span class="decimal">.0</span></td>
+                        <td>0<span class="decimal">.0</span></td>
+                        <td>25620<span class="decimal">.0</span></td>
+                        <td>0<span class="decimal">.0</span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>佐藤 花子</td>
+                        <td>令和7年12月1日</td>
+                        <td>102</td>
+                        <td>15840<span class="decimal">.0</span></td>
+                        <td>0<span class="decimal">.0</span></td>
+                        <td>29280<span class="decimal">.0</span></td>
+                        <td>0<span class="decimal">.0</span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>鈴木 一郎</td>
+                        <td>令和7年12月1日</td>
+                        <td>103</td>
+                        <td>18810<span class="decimal">.0</span></td>
+                        <td>0<span class="decimal">.0</span></td>
+                        <td>34770<span class="decimal">.0</span></td>
+                        <td>0<span class="decimal">.0</span></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+        
+
+        
+        <h2>集計</h2>
+        <div class="csv-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>健康保険料<br>（本月額）</th>
+                        <th>健康保険料<br>（前月以前額）</th>
+                        <th>厚生年金保険料<br>（本月額）</th>
+                        <th>厚生年金保険料<br>（前月以前額）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td>合計</td>
+                        <td>48510<span class="decimal">.0</span></td>
+                        <td>0<span class="decimal">.0</span></td>
+                        <td>89670<span class="decimal">.0</span></td>
+                        <td>0<span class="decimal">.0</span></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    
+
+    
+    <div class="document csv-section">
+        <h2>CSV: 納付額詳細.csv</h2>
+        
+        <button class="transpose-btn" onclick="transposeTable( 0 )">行列を反転</button>
+        <div class="csv-table" id="csv-table-0">
+            <table>
+                <thead>
+                    <tr>
+                        
+                        <th>項目</th>
+                        
+                        <th>金額</th>
+                        
+                        <th>備考</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        
+                        <td>健康保険料（本人負担分）</td>
+                        
+                        <td>48510<span class="decimal">.0</span></td>
+                        
+                        <td>事業主負担分も同額</td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td>厚生年金保険料（本人負担分）</td>
+                        
+                        <td>89670<span class="decimal">.0</span></td>
+                        
+                        <td>事業主負担分も同額</td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td>合計</td>
+                        
+                        <td>138180<span class="decimal">.0</span></td>
+                        
+                        <td>本人負担分合計</td>
+                        
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    
+</body>
+</html>
