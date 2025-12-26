@@ -1,6 +1,6 @@
 ---
 name: 機能リクエスト
-about: egov-viewer の新機能を提案してください
+about: govkit の新機能を提案してください
 title: '[FEATURE] '
 labels: enhancement
 assignees: ''
