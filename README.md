@@ -1,9 +1,9 @@
 # govkit
 
-[![CI](https://github.com/yourusername/govkit/workflows/CI/badge.svg)](https://github.com/yourusername/govkit/actions)
+[![CI](https://github.com/yuuuutsk/govkit/workflows/CI/badge.svg)](https://github.com/yuuuutsk/govkit/actions)
 [![Go Version](https://img.shields.io/badge/Go-1.20+-00ADD8?style=flat&logo=go)](https://go.dev/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Go Report Card](https://goreportcard.com/badge/github.com/yourusername/govkit)](https://goreportcard.com/report/github.com/yourusername/govkit)
+[![Go Report Card](https://goreportcard.com/badge/github.com/yuuuutsk/govkit)](https://goreportcard.com/report/github.com/yuuuutsk/govkit)
 
 日本の政府系システムと連携するための CLI ツール集です。
 
@@ -58,7 +58,7 @@ govkit egov-viewer /path/to/egov/archive.zip
 Go 1.20 以上が必要です。
 
 ```bash
-git clone https://github.com/yourusername/govkit.git
+git clone https://github.com/yuuuutsk/govkit.git
 cd govkit
 make build
 ```
@@ -66,7 +66,7 @@ make build
 または
 
 ```bash
-go install github.com/yourusername/govkit/cmd/govkit@latest
+go install github.com/yuuuutsk/govkit/cmd/govkit@latest
 ```
 
 > **Note**: バイナリリリースは準備中です。現在はソースからのビルドをお願いします。

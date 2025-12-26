@@ -1,4 +1,4 @@
-module github.com/yourusername/govkit
+module github.com/yuuuutsk/govkit
 
 go 1.24.6
 
