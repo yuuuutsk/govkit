@@ -38,6 +38,19 @@ govkit egov-viewer /path/to/egov/archive.zip
 
 実行すると、カレントディレクトリに `output.html` が生成されます。
 
+#### サンプル出力
+
+実際の出力例を確認したい場合は、以下のリンクからブラウザで表示できます：
+
+**[📄 サンプル出力を見る](https://htmlpreview.github.io/?https://github.com/yuuuutsk/govkit/blob/main/examples/sample-output.html)**
+
+サンプルデータは [examples/sample-data/](examples/sample-data/) に格納されています。
+
+```bash
+# サンプルデータで試す
+govkit egov-viewer examples/sample-data
+```
+
 #### 対応フォーマット
 
 | 形式 | 説明 | エンコーディング |

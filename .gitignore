@@ -1,5 +1,6 @@
 govkit
 output.html
+!examples/sample-output.html
 *.exe
 *.test
 *.out
