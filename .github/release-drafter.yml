@@ -1,0 +1,57 @@
+---
+name-template: 'v$RESOLVED_VERSION 🎉'
+tag-template: 'v$RESOLVED_VERSION'
+categories:  # categorize
+  - title: '🚀 Features'
+    labels:
+      - 'feature'
+  - title: '🎨 Refactoring'
+    labels:
+      - 'refactoring'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'bug'
+  - title: '🛠️ Test'
+    labels:
+      - 'test'
+  - title: '💥 Breaking Changes'
+    labels:
+      - 'breaking'
+change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+change-title-escapes: '\<*_&'  # You can add # and @ to disable mentions, and add ` to disable code blocks.
+autolabeler:  # auto add labels based on branches or titles
+  - label: 'feature'
+    branch:
+      - '/feature\/.+/'
+  - label: 'refactoring'
+    branch:
+      - '/refactor\/.+/'
+    title:
+      - '/refactor/i'
+  - label: 'bug'
+    branch:
+      - '/fix\/.+/'
+      - '/bug\/.+/'
+    title:
+      - '/fix/i'
+      - '/bug/i'
+  - label: 'test'
+    branch:
+      - '/test\/.+/'
+version-resolver:  # resolve next version based on tags ($RESOLVED_VERSION)
+  major:
+    labels:
+      - 'breaking'
+  minor:
+    labels:
+      - 'feature'
+  patch:
+    labels:
+      - 'bug'
+      - 'test'
+      - 'refactoring'
+  default: patch
+template: |
+  ## What's Changed
+
+  $CHANGES
